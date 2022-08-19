@@ -29,7 +29,7 @@ export const Pokemon = () => {
   }, []);
 
   const detalles = async () => {
-    const data = await fetch(`https://localhost/pokemons/${id}`);
+    const data = await fetch(`http://192.168.100.6:3001/pokemons/${id}`);
 
     const pokemon = await data.json();
     setPokemon(pokemon);
@@ -64,7 +64,7 @@ export const Pokemon = () => {
           <img src={pokemon.img} alt="" />
           <div className={style.parrafo}>
             <p>peso: {pokemon.weight}kg</p>
-            <p>altura: {pokemon.height}ft</p>
+            <p>altura: {pokemon.height}mts</p>
           </div>
         </div>
 

@@ -16,7 +16,7 @@ export const Pokedex = () => {
   const [page, setPage] = useState(0);
 
   const pagination = () => {
-    if (pokemons.length) return pokemons.slice(page, page + 10);
+    if (pokemons.length) return pokemons.slice(page, page + 12);
     if (pokemons.info) return pokemons;
     return [];
   };
@@ -24,14 +24,14 @@ export const Pokedex = () => {
   const array = pagination();
 
   const nextPage = () => {
-    if (pokemons.length > page + 10) {
-      setPage(page + 10);
+    if (pokemons.length > page + 12) {
+      setPage(page + 12);
     }
   };
 
-  const previusPage = () => {
+  const previousPage = () => {
     if (page > 0) {
-      setPage(page - 10);
+      setPage(page - 12);
     }
   };
 
@@ -39,7 +39,7 @@ export const Pokedex = () => {
     <div className={style.container}>
       <Search />
       <div className="botones">
-        <button onClick={previusPage} className="pages">
+        <button onClick={previousPage} className="pages">
           &laquo; Previous
         </button>
         <button onClick={nextPage} className="pages">
@@ -48,7 +48,7 @@ export const Pokedex = () => {
       </div>
       <Card
         array={array}
-        img={"https://c.tenor.com/F30e8arYkdYAAAAC/pokemon-spinning.gif"}
+        img={"https://media.baamboozle.com/uploads/images/125978/1629738053_29014_gif-url.gif"}
       />
     </div>
   );

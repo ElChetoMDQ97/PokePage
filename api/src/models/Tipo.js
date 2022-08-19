@@ -2,7 +2,7 @@ const { DataTypes, NUMBER } = require('sequelize');
 
 module.exports = sequelize => {
     sequelize.define('tipo', {
-        id: {
+        slot: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,

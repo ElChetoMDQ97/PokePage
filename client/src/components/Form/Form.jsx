@@ -12,7 +12,6 @@ export const Form = () => {
     if (!input.name) {
       errors.name = "El name es obligatorio";
     }
-
     return errors;
   };
 
@@ -24,6 +23,7 @@ export const Form = () => {
     velocidad: 0,
     altura: 0,
     peso: 0,
+    img: {},
     tipos: [],
   });
 
@@ -66,7 +66,7 @@ export const Form = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    const crear = await fetch("https://localhost/pokemons", {
+    const crear = await fetch("http://192.168.100.6:3001/pokemons", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -98,7 +98,7 @@ export const Form = () => {
             <label>Pokemon name</label>
             <input
               type="text"
-              placeholder="pikachu.."
+              placeholder="Name"
               name="name"
               value={data.name}
               onChange={handleInputChange}

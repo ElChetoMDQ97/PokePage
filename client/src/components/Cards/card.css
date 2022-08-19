@@ -16,7 +16,7 @@ h5 {
 .container {
   display: flex;
   justify-content: space-around;
-  margin-top: -50px;
+  margin-top: -60px;
   flex-direction: row;
   flex-wrap: wrap;
   flex: 2;
@@ -32,7 +32,10 @@ h5 {
   margin-top: -40px;
   margin-bottom: 30px;
   padding: 8px 16px;
-  background-color: #1abc9c;
+  background-color: #7e1abcca;
+  box-shadow: 0px 5px 20px -10px #000000;
+  margin-top: -70px;
+  cursor: pointer;
 }
 
 figure {

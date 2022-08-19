@@ -12,9 +12,9 @@ import { Team } from "./Pages/Team/Team";
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTypes());
-    dispatch(getPokemons());
+  useEffect( () => {
+     dispatch(getTypes());
+     dispatch(getPokemons());
   });
 
   return (

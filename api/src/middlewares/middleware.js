@@ -5,6 +5,7 @@ const info = async (by) => {
   const api = await fetch("https://pokeapi.co/api/v2/pokemon?limit=40");
   const data = await api.json();
   const bd = await Pokemon.findAll({ include: Tipo });
+
   let base = [...bd, ...data.results];
 
   if (by === "2") {
@@ -19,6 +20,7 @@ const info = async (by) => {
     if (base[i].url) {
       const pokemon = await fetch(base[i].url);
       const info = await pokemon.json();
+
       pokemonInfo.push({
         id: info.id,
         name: info.name,
@@ -83,6 +85,7 @@ const forId = async (id) => {
   try {
     const api = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await api.json();
+
     const pokemonId = {
       id: data.id,
       name: data.name,
@@ -96,6 +99,7 @@ const forId = async (id) => {
       height: data.height,
       weight: data.weight,
     };
+
     return pokemonId;
   } catch (error) {}
   try {
@@ -112,6 +116,7 @@ const forId = async (id) => {
       height: db.altura,
       weight: db.peso,
     };
+
     return pokemonDb;
   } catch (error) {
     return {};

@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./team.module.css";
 import { Card } from "../../components/Cards/Card";
-import { useSelector } from "react-redux";
+
 
 export const Team = () => {
   const team = () => {

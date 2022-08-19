@@ -35,9 +35,5 @@ module.exports = (sequelize) => {
     peso: {
       type: DataTypes.DECIMAL
     },
-    createdInDB: {
-      type: DataTypes.BOOLEAN,
-      defaultvalue: true,
-    }
   });
 };

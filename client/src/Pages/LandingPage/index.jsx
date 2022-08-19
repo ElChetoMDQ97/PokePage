@@ -7,14 +7,14 @@ export const LandingPage = () => {
     <div className={style.container}>
       <div>
         <h1>
-          <span>Find</span> all your <br />
-          favorite <br />
-          <span>Pokemon</span>
+          <span>Find all your <br />
+          favorites Pokemons</span>
         </h1>
         <p>
-          You can know the type of Pokemon, <br />
-          its strengths, disadvantages and <br />
-          abilities.
+          Here you can see pokemons type, <br />
+          their stats, weight and <br />
+          height.<br />
+          <span>¡you can create your own pokemon!</span>.
         </p>
         <Link to="/home">
           <input type="submit" value="See Pokemon" className={style.myButton} />

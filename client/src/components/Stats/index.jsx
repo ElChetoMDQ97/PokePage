@@ -6,11 +6,11 @@ const Stats = ({valor, nombre}) => {
       <div>
         <meter
           min="0"
-          max="120"
+          max="200"
           value={valor}
-          low="25"
-          high="100"
-          optimum="120"
+          low="40"
+          high="130"
+          optimum="200"
         />
         <p>
           {nombre} ------ <span>{valor}</span>
