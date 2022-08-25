@@ -39,13 +39,6 @@ conn.sync({ force: true }).then(() => {
     console.log("%s listening at 3000"); // eslint-disable-line no-console
   });
 });
-import dotenv from "dotenv";
-dotenv.config();
-
-axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
-https://github.com/timanovsky/subdir-heroku-buildpack
-
-PROJECT_PATH
 
 const basename = path.basename(__filename);
 
