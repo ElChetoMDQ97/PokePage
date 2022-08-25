@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { getPokemons } from "../../actions";
 import style from "./form.module.css";
 
 export const Form = () => {
+  const history = useHistory ();
   const dispatch = useDispatch();
   const options = useSelector((store) => store.types);
 
   const validate = (input) => {
     let errors = {};
     if (!input.name) {
-      errors.name = "El name es obligatorio";
+      errors.name = "Name is required";
     }
     return errors;
   };
@@ -23,7 +25,6 @@ export const Form = () => {
     velocidad: 0,
     altura: 0,
     peso: 0,
-    img: {},
     tipos: [],
   });
 
@@ -33,7 +34,7 @@ export const Form = () => {
     if (e.target.name !== "name") {
       setData({
         ...data,
-        [e.target.name]: Number(e.target.value) <= 0 ? 0 : e.target.value,
+        [e.target.name]: Number(e.target.value) <= 1 ? 1 : Number(e.target.value),
       });
     } else {
       setErrors(
@@ -87,13 +88,15 @@ export const Form = () => {
       peso: 0,
       tipos: [],
     });
+    alert('Pokemon created successfully')
+    history.push('/home');
   };
 
   return (
     <div className={style.containerCreate}>
       <form action="POST" className={style.form} onSubmit={submit}>
         <div className={style.separado}>
-          <h1>Crea tu propio Pokemon</h1>
+          <h1>Create your Pokemon</h1>
           <p className={errors.name ? style.danger : style.question}>
             <label>Pokemon name</label>
             <input
@@ -102,60 +105,73 @@ export const Form = () => {
               name="name"
               value={data.name}
               onChange={handleInputChange}
+              maxlength="25"
               required
             />
           </p>
           {errors.name ? <p className="danger">{errors.username}</p> : null}
           <p className={style.question}>
-            <label>Vida</label>
+            <label>Life</label>
             <input
               type="number"
               name="vida"
               value={data.vida}
+              min="1"
+              max="200"
               onChange={handleInputChange}
             />
           </p>
           <p className={style.question}>
-            <label>Fuerza</label>
+            <label>Strength</label>
             <input
               type="number"
               name="fuerza"
               value={data.fuerza}
+              min="1"
+              max="200"
               onChange={handleInputChange}
             />
           </p>
           <p className={style.question}>
-            <label>Defensa</label>
+            <label>Defense</label>
             <input
               type="number"
               name="defensa"
               value={data.defensa}
+              min="1"
+              max="200"
               onChange={handleInputChange}
             />
           </p>
           <p className={style.question}>
-            <label>Velocidad</label>
+            <label>Speed</label>
             <input
               type="number"
               name="velocidad"
               value={data.velocidad}
+              min="1"
+              max="200"
               onChange={handleInputChange}
             />
           </p>
           <p className={style.question}>
-            <label>Altura</label>
+            <label>Height</label>
             <input
               type="number"
               name="altura"
               value={data.altura}
+              min="1"
+              max="80"
               onChange={handleInputChange}
             />
           </p>
           <p className={style.question}>
-            <label>Peso</label>
+            <label>Weight</label>
             <input
               type="number"
               name="peso"
+              min="1"
+              max="10000"
               value={data.peso}
               onChange={handleInputChange}
             />
@@ -163,8 +179,8 @@ export const Form = () => {
         </div>
 
         <div className={style.hiddenCB}>
-          <h1>Tipos</h1>
-          <div className={style.tipos}>
+          <h1>Types <h6>(default type: normal)</h6></h1>
+          <div className={style.tipos} >
             {options?.map((t) => (
               <div key={t.slot}>
                 <input
@@ -172,13 +188,14 @@ export const Form = () => {
                   name={t.name}
                   value={t.slot}
                   id={t.slot}
+                  maxLength='3'
                   onChange={checkbox}
                 />
                 <label htmlFor={t.slot}>{t.name}</label>
                 {t.slot % 4 === 0 ? <br /> : null}
               </div>
             ))}
-            <input type="submit" value="Crear" className={style.submit} />
+            <input type="submit" value="Create" className={style.submit}/>
           </div>
         </div>
       </form>

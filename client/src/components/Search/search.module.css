@@ -16,7 +16,7 @@
     7px 7px 0 rgb(22, 160, 133);
     
 }
-
+.reset{ cursor: pointer}
 .field > input[type="text"],
 .field > .button {
   display: block;

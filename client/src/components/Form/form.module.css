@@ -20,7 +20,7 @@ label {
   justify-content: space-between;
   box-sizing: border-box;
   padding: 30px 25px;
-  background-color: #fffcfc81;
+  background-color: #b3b3b3df;
   border-radius: 40px;
   margin-top: 80px;
 }
@@ -36,7 +36,11 @@ label {
 }
 
 .tipos label {
-  margin-top: 100px;
+  margin: 2px;
+  padding: 2px;
+  display:inline-flex;
+  border-style: solid;
+  border-color: black;
 }
 
 .hiddenCB div {
@@ -44,6 +48,9 @@ label {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.hiddenCB h6 {
+  font-size: 12px;
 }
 
 .hiddenCB input[type="checkbox"],
@@ -57,15 +64,18 @@ label {
 }
 
 .hiddenCB input[type="checkbox"] + label:hover {
-  background: rgb(22, 160, 133);
+  background: rgba(22, 160, 132, 0.72);
+  box-shadow: 0 12px 20px 0 rgba(0,0,0,0.24), 0 21px 50px 0 rgba(0,0,0,0.19);
 }
 
 .hiddenCB input[type="checkbox"]:checked + label {
-  background: rgba(0, 128, 128, 0.4);
+  background: rgba(0, 41, 128, 0.704);
+  box-shadow: 0 12px 20px 0 rgba(0,0,0,0.24), 0 21px 50px 0 rgba(0,0,0,0.19);
 }
 
 .hiddenCB input[type="checkbox"]:checked + label:hover {
   background: rgba(0, 128, 128, 0, 0.7);
+  box-shadow: 0 12px 20px 0 rgba(0,0,0,0.24), 0 21px 50px 0 rgba(0,0,0,0.19);
 }
 
 .question {
@@ -100,7 +110,7 @@ form .danger input {
   appearance: none;
   text-align: center;
   background-color: none;
-  border: 1px solid rgb(22, 160, 133);
+  border: 1px solid rgb(160, 22, 22);
   line-height: 0;
   font-size: 17px;
   width: 100%;
@@ -117,7 +127,7 @@ form .question input {
   appearance: none;
   text-align: center;
   background-color: none;
-  border: 1px solid rgb(22, 160, 133);
+  border: 1px solid rgb(169, 163, 78);
   line-height: 0;
   font-size: 17px;
   width: 100%;
@@ -132,7 +142,7 @@ form .question input {
 
 .question input:focus {
   outline: none;
-  background: rgb(22, 160, 133);
+  background: rgb(35, 251, 208);
   color: white;
 }
 
@@ -141,7 +151,7 @@ form .question input {
   padding: 0.6em 0.8em;
   width: 100px;
   margin-right: 20px;
-  background-color: rgb(26, 188, 156);
+  background-color: rgb(131, 26, 188);
   color: white;
   border: none;
   cursor: pointer;

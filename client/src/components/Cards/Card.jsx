@@ -34,7 +34,7 @@ export const Card = ({ array, img }) => {
             src={
               array.info
                 ? "https://media.giphy.com/media/UHAYP0FxJOmFBuOiC2/giphy.gif"
-                : img
+              : img
             }
             alt="Not found"
           />

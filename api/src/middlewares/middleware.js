@@ -72,6 +72,12 @@ const forName = async (name) => {
           type: data.types.map((t) => t.type.name),
           img: data.sprites.versions["generation-v"]["black-white"].animated
             .front_default,
+            vida: data.stats[0].base_stat,
+            fuerza: data.stats[1].base_stat,
+            defensa: data.stats[2].base_stat,
+            velocidad: data.stats[5].base_stat,
+            height: data.height,
+            weight: data.weight,
         },
       ];
       return pokemonName;
