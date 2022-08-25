@@ -66,7 +66,7 @@ export const Form = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    const crear = await fetch("http://127.0.0.1:3001/pokemons", {
+    const crear = await fetch("https://app-jbhm-poke.herokuapp.com/pokemons", {
       method: "POST",
       headers: {
         Accept: "application/json",
