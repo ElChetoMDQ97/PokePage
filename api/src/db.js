@@ -1,4 +1,5 @@
-require('dotenv').config();
+import dotenv from "dotenv";
+dotenv.config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
@@ -34,7 +35,7 @@ let sequelize =
         `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/development`,
         { logging: false, native: false }
       );
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(process.env.PORT, () => {
     console.log("%s listening at 3000"); // eslint-disable-line no-console
   });
