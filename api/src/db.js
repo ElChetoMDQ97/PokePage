@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+require("dotenv").config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
