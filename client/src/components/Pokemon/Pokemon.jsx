@@ -29,7 +29,7 @@ export const Pokemon = () => {
   }, []);
 
   const detalles = async () => {
-    const data = await fetch(`http://192.168.100.6:3001/pokemons/${id}`);
+    const data = await fetch(`https://juan-poke-page.herokuapp.com/pokemons/${id}`);
 
     const pokemon = await data.json();
     setPokemon(pokemon);
