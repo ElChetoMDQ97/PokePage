@@ -1,5 +1,5 @@
 export const getTypes = () => async (dispatch) => {
-  const response = await fetch("http://192.168.100.6:3001/types");
+  const response = await fetch("https://juan-poke-page.herokuapp.com/types");
   const data = await response.json();
   dispatch({
     type: "GET_TYPE",
@@ -8,7 +8,7 @@ export const getTypes = () => async (dispatch) => {
 };
 
 export const getPokemons = () => async (dispatch) => {
-  const response = await fetch(`http://192.168.100.6:3001/pokemons`);
+  const response = await fetch(`https://juan-poke-page.herokuapp.com/pokemons`);
   const data = await response.json();
   dispatch({
     type: "GET_POKEMONS",
@@ -18,7 +18,7 @@ export const getPokemons = () => async (dispatch) => {
 
 export const getByName = (name) => async (dispatch) => {
   const response = await fetch(
-    `http://192.168.100.6:3001/pokemons?name=${name}`
+    `https://juan-poke-page.herokuapp.com/pokemons?name=${name}`
   );
   const data = await response.json();
   dispatch({
@@ -29,7 +29,7 @@ export const getByName = (name) => async (dispatch) => {
 
 export const filters = (num) => async (dispatch) => {
   const response = await fetch(
-    `http://192.168.100.6:3001/pokemons?by=${num}`
+    `https://juan-poke-page.herokuapp.com/pokemons?by=${num}`
   );
   const data = await response.json();
   dispatch({
