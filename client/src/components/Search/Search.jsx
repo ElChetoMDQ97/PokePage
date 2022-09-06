@@ -22,17 +22,33 @@ export const Search = ({currentPage}) => {
       currentPage(1);
     }, 1);
   }
-  
-  const submit = (e) => {
+
+  const reloadAll = (e) => {
     e.preventDefault();
-    dispatch(getByName(pokemons));
-    setPokemons("");
+    alert("reloading pokemons, please wait")
+     dispatch(getByName(pokemons));
+     setPokemons("");
+     setTimeout(() => {
+       currentPage(1);
+     }, 1);
+   };
+
+  const submit = (e) => {
+   e.preventDefault();
+    if(dispatch(getByName(pokemons))){
+          setPokemons("");
     setTimeout(() => {
       currentPage(1);
     }, 1);
+    }
+   else{
+    alert("Error 404: not found")
+    reloadAll()
+  }
   };
 
   const reset = () => {window.location.reload();}
+
   
 
   const creadoBy = (e) => {
@@ -58,9 +74,9 @@ export const Search = ({currentPage}) => {
             id="searchterm"
             value={pokemons}
             onChange={handleInputChange}
-            placeholder="Find your pokemon..."
+            placeholder="Find your pokemon by name or id"
           />
-          <input className={button} type="submit" value="Find!" />
+          <input className={button} type="submit" value="Search" />
         </div>
       </form>
       <div className={style.field2}>
@@ -85,6 +101,7 @@ export const Search = ({currentPage}) => {
           <option value="fuerza+">Order By: strength increase</option>
           <option value="fuerza-">Order By: strength decrease</option>
         </select>
+        <button onClick={reloadAll} className={button}>Reload Pokemons</button>
       </div>
     </div>
   );

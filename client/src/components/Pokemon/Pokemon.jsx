@@ -42,7 +42,7 @@ export const Pokemon = () => {
         <h2>#{pokemon.id}</h2>
 
         <div class={style.pokebola}>
-          <p>Capturar</p>
+          <p>Catch</p>
           <button
             onClick={() => {
               addTeam({
@@ -63,8 +63,9 @@ export const Pokemon = () => {
         <div className={style.ima}>
           <img src={pokemon.img} alt="" />
           <div className={style.parrafo}>
-            <p>peso: {pokemon.weight}kg</p>
-            <p>altura: {pokemon.height}mts</p>
+            <p>Weigth:<br/>{pokemon.weight}kgs</p>
+            <br/>
+            <p>Heigth:<br/>{pokemon.height}fts</p>
           </div>
         </div>
 
@@ -75,12 +76,12 @@ export const Pokemon = () => {
         </div>
         <div className={style.meter}>
           <div className={style.type}>
-            <Stats valor={pokemon.vida} nombre={"HP"} />
-            <Stats valor={pokemon.fuerza} nombre={"Fuerza"} />
+            <Stats valor={pokemon.vida} nombre={"Life"} />
+            <Stats valor={pokemon.fuerza} nombre={"Attack"} />
           </div>
           <div className={style.type}>
-            <Stats valor={pokemon.defensa} nombre={"Defensa"} />
-            <Stats valor={pokemon.velocidad} nombre={"Velocidad"} />
+            <Stats valor={pokemon.defensa} nombre={"Defence"} />
+            <Stats valor={pokemon.velocidad} nombre={"Speed"} />
           </div>
         </div>
       </div>

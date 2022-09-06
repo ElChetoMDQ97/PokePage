@@ -17,7 +17,7 @@ export const LandingPage = () => {
           <span>¡you can create your own pokemon!</span>.
         </p>
         <Link to="/home">
-          <input type="submit" value="See Pokemon" className={style.myButton} />
+          <input type="submit" value="See Pokedex" className={style.myButton} />
         </Link>
       </div>
 

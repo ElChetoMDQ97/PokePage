@@ -41,12 +41,13 @@ h5 {
 
 figure {
   display: inline-block;
-  width: 300px;
+  width: 333px;
   margin-top: 40px;
   padding: 1em;
   border-radius: 15px;
   background: #ddd;
   text-align: left;
+
 }
 
 .cardCaption {

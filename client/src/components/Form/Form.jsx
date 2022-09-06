@@ -19,13 +19,14 @@ export const Form = () => {
 
   const [data, setData] = useState({
     name: "",
-    vida: 0,
-    fuerza: 0,
-    defensa: 0,
-    velocidad: 0,
-    altura: 0,
-    peso: 0,
+    vida: 1,
+    fuerza: 1,
+    defensa: 1,
+    velocidad: 1,
+    altura: 1,
+    peso: 1,
     tipos: [],
+    // img: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -51,6 +52,10 @@ export const Form = () => {
   };
 
   const checkbox = (e) => {
+    // var listCKB = document.querySelectorAll("input[type=checkbox]");
+    // var cont = listCKB.filter(e => e.checked === true);
+    // console.log(cont)
+    // var selected = e.target.checked
     if (data.tipos.includes(e.target.value)) {
       data.tipos = data.tipos.filter((id) => id !== e.target.value);
       setData({
@@ -62,8 +67,7 @@ export const Form = () => {
         ...data,
         tipos: [...data.tipos, e.target.value],
       });
-    }
-  };
+    }}
 
   const submit = async (e) => {
     e.preventDefault();
@@ -78,18 +82,22 @@ export const Form = () => {
     dispatch(getPokemons());
     const respuesta = await crear.json();
     console.log(respuesta);
-    setData({
+   try{setData({
       name: "",
-      vida: 0,
-      fuerza: 0,
-      defensa: 0,
-      velocidad: 0,
-      altura: 0,
-      peso: 0,
+      vida: 1,
+      fuerza: 1,
+      defensa: 1,
+      velocidad: 1,
+      altura: 1,
+      peso: 1,
       tipos: [],
+      // img: "",
     });
-    alert('Pokemon created successfully')
-    history.push('/home');
+    if(respuesta){alert('Pokemon created successfully')
+    history.push('/home')}}
+    catch(e){
+      e.alert('Pokemon cant be created, reason: invalid data')
+    }
   };
 
   return (
@@ -115,7 +123,7 @@ export const Form = () => {
             <input
               type="number"
               name="vida"
-              value={data.vida}
+              value={data.vida || 1}
               min="1"
               max="200"
               onChange={handleInputChange}
@@ -126,7 +134,7 @@ export const Form = () => {
             <input
               type="number"
               name="fuerza"
-              value={data.fuerza}
+              value={data.fuerza || 1}
               min="1"
               max="200"
               onChange={handleInputChange}
@@ -137,7 +145,7 @@ export const Form = () => {
             <input
               type="number"
               name="defensa"
-              value={data.defensa}
+              value={data.defensa || 1}
               min="1"
               max="200"
               onChange={handleInputChange}
@@ -148,7 +156,7 @@ export const Form = () => {
             <input
               type="number"
               name="velocidad"
-              value={data.velocidad}
+              value={data.velocidad || 1}
               min="1"
               max="200"
               onChange={handleInputChange}
@@ -159,7 +167,7 @@ export const Form = () => {
             <input
               type="number"
               name="altura"
-              value={data.altura}
+              value={data.altura || 1}
               min="1"
               max="80"
               onChange={handleInputChange}
@@ -172,15 +180,43 @@ export const Form = () => {
               name="peso"
               min="1"
               max="10000"
-              value={data.peso}
+              value={data.peso || 1}
               onChange={handleInputChange}
             />
           </p>
+          {/* <p className={style.question}>
+            <label>Image</label>
+            <input
+              type="text"
+              placeholder="Name"
+              name="name"
+              value={data.img || "https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif"}
+              onChange={handleInputChange}
+            />
+          </p> */}
         </div>
 
         <div className={style.hiddenCB}>
           <h1>Types <h6>(default type: normal)</h6></h1>
           <div className={style.tipos} >
+            
+{/* <select>
+          {options?.map((t) => 
+            <option onChange={checkbox}>
+            {t.name} 
+            </option> 
+            )}
+            </select>
+          
+            <select>
+          {options?.map((t) => 
+            <option onChange={checkbox}>
+            {t.name} 
+            </option> 
+            )}
+            </select> */}
+           
+            
             {options?.map((t) => (
               <div key={t.slot}>
                 <input
@@ -188,7 +224,6 @@ export const Form = () => {
                   name={t.name}
                   value={t.slot}
                   id={t.slot}
-                  maxLength='3'
                   onChange={checkbox}
                 />
                 <label htmlFor={t.slot}>{t.name}</label>
