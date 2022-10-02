@@ -11,9 +11,9 @@ export const LandingPage = () => {
           favorites Pokemons</span>
         </h1>
         <p>
-          Here you can see pokemons type, <br />
-          their stats, weight and <br />
-          height.<br />
+          Here you can see pokemons types, <br />
+          their attack,weight, speed <br />
+          heal and more!.<br />
           <span>¡you can create your own pokemon!</span>.
         </p>
         <Link to="/home">

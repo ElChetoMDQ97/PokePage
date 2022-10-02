@@ -1,43 +1,45 @@
-.header {
-  position: absolute;
-  height: 72px;
-  top: 25px;
-  width: 100%;
-  margin-top: -32px;
-  padding: 10px 100px;
+.container {
+  position:static;
   display: flex;
-  justify-content: space-between;
+  max-width: 100%;
   align-items: center;
+  justify-content: space-between;
+  object-fit: cover;
   background-color: #f2cb07;
   -webkit-box-shadow: 0px 10px 10px 0px rgba(33, 33, 33, 0.35);
   -moz-box-shadow: 0px 10px 10px 0px rgba(33, 33, 33, 0.35);
   box-shadow: 0px 10px 10px 0px rgba(33, 33, 33, 0.35);
 }
 
-.header .logo img {
-  width: 175px;
-  height: 125px;
+.logo img {
+  position: relative;
+  width: 125px;
+  height: 100px;
 }
 
-.header ul {
+.ul {
   display: flex;
-  justify-content: center;
+  list-style-type: none;
+  position: relative;
   align-items: center;
 }
 
-.header ul li {
-  list-style: none;
-  margin-left: 20px;
-}
-
-.header ul li a {
-  text-decoration: none;
-  padding: 6px 15px;
-  color: #212121;
+.li {
+  font-size: 20px;
+  margin: 3px;
+  padding: 3px;
+  background-color: rgba(64, 136, 5, 0.689);
+  border-style: solid;
+  text-align: center;
   border-radius: 20px;
-  font-weight: 500;
+  border-color: black;
+  
 }
 
-.header ul li a:hover {
-  background-color: #f2f2f2;
+.li:hover {
+  background-color: rgba(26, 188, 139, 0.671);
+}
+
+.link{
+  text-decoration: none;
 }

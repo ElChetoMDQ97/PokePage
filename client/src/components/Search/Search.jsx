@@ -1,108 +1,29 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import style from "./search.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import { filters, getByName, order, type } from "../../actions";
+import { getName } from '../../actions';
 
-
-export const Search = ({currentPage}) => {
-
+export default function SearchBar({currentPage}){
   const dispatch = useDispatch();
-  const [pokemons, setPokemons] = useState("");
-
-  const options = useSelector((store) => store.types);
-  const button = style.button;
-
-  const handleInputChange = (e) => {
-    setPokemons(e.target.value);
-  };
-
-  const byTipo = (e) => {
-    dispatch(type(e.target.value));
-    setTimeout(() => {
-      currentPage(1);
-    }, 1);
+  const [name, setName] = useState("");
+  const Swal = require('sweetalert2');
+  const handleChange = (e) => {
+    setName(e.target.value);
   }
 
-  const reloadAll = (e) => {
-    e.preventDefault();
-    alert("reloading pokemons, please wait")
-     dispatch(getByName(pokemons));
-     setPokemons("");
-     setTimeout(() => {
-       currentPage(1);
-     }, 1);
-   };
-
-  const submit = (e) => {
+  const handleSubmit = (e) => {
+    if(name.length === 0){return Swal.fire({icon:'error',title:'Error, something went wrong!',text:'There is no pokemon name to search'})}
    e.preventDefault();
-    if(dispatch(getByName(pokemons))){
-          setPokemons("");
-    setTimeout(() => {
-      currentPage(1);
-    }, 1);
-    }
-   else{
-    alert("Error 404: not found")
-    reloadAll()
-  }
-  };
-
-  const reset = () => {window.location.reload();}
-
-  
-
-  const creadoBy = (e) => {
-    dispatch(filters(e.target.value));
-    setTimeout(() => {
-      currentPage(1);
-    }, 1);
-  }
-
-  const orderBy = (e) => {
-    dispatch(order(e.target.value));
-    setTimeout(() => {
-      currentPage(1);
-    }, 1);
+    dispatch(getName(name))
+    setName('');
+    setTimeout(() => {currentPage(1)},100);
   }
 
   return (
     <div className={style.container}>
-      <form onSubmit={submit}>
-        <div className={style.field}>
-          <input
-            type="text"
-            id="searchterm"
-            value={pokemons}
-            onChange={handleInputChange}
-            placeholder="Find your pokemon by name or id"
-          />
-          <input className={button} type="submit" value="Search" />
-        </div>
-      </form>
-      <div className={style.field2}>
-      <button onClick={reset} className={button}>Reset filters</button>
-        <select className={button} name="Type" onChange={byTipo}>
-          <option value="">Type: All</option>
-          {options?.map((p) => (
-            <option value={p.name} key={p.slot}>
-              Type: {p.name}
-            </option>
-          ))}
-        </select>
-        <select name="creado" className={button} onChange={creadoBy}>
-          <option value="0">Created By: default</option>
-          <option value="1">Created By: API</option>
-          <option value="2">Created By: Fandom</option>
-        </select>
-        <select name="Ordenar" className={button} onChange={orderBy}>
-          <option value="">Order By: default</option>
-          <option value="a-z">Order By: A-Z</option>
-          <option value="z-a">Order By: Z-A</option>
-          <option value="fuerza+">Order By: strength increase</option>
-          <option value="fuerza-">Order By: strength decrease</option>
-        </select>
-        <button onClick={reloadAll} className={button}>Reload Pokemons</button>
-      </div>
+        <input type='text' placeholder='Search your Pokemon...' onChange={(e) => handleChange(e)} value={name} className={style.inputText}/>
+        &nbsp;
+        <button type= "submit" onClick={(e) => handleSubmit(e)} className={style.button}>Search</button>
     </div>
-  );
+)
 };

@@ -1,41 +1,23 @@
 import "./App.css";
-import { useEffect } from "react";
-import { Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { BrowserRouter, Route } from "react-router-dom";
 import { LandingPage } from "./Pages/LandingPage";
+import Pokemon from "./components/Pokemon/Pokemon";
 import { Pokedex } from "./Pages/Pokedex/Pokedex";
 import { Create } from "./Pages/Create/Create";
-import { Navbar } from "./components/Navbar/Navbar";
-import { getPokemons, getTypes } from "./actions";
-import { Pokemon } from "./components/Pokemon/Pokemon";
 import { Team } from "./Pages/Team/Team";
 
-function App() {
-  const dispatch = useDispatch();
-  useEffect( () => {
-     dispatch(getTypes());
-     dispatch(getPokemons());
-  });
 
+function App() {
   return (
-    <>
-      <Navbar />
-      <Route exact path="/pokedex/:id" >
-        <Pokemon />
-      </Route>
-      <Route exact path="/">
-        <LandingPage />
-      </Route>
-      <Route exact path="/home">
-        <Pokedex />
-      </Route>
-      <Route exact path="/create">
-        <Create />
-      </Route>
-      <Route exact path="/team">
-        <Team />
-      </Route>
-    </>
+    <BrowserRouter>
+    <div className="App">
+      <Route exact path="/pokedex/:id" component={Pokemon}/>
+      <Route exact path="/" component={LandingPage}/>
+      <Route exact path="/home" component={Pokedex}/>
+      <Route exact path="/create" component={Create} />
+      <Route exact path="/team" component={Team} />
+    </div>
+    </BrowserRouter>
   );
 }
 

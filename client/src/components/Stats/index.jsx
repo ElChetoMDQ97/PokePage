@@ -13,7 +13,7 @@ const Stats = ({valor, nombre}) => {
           optimum="200"
         />
         <p>
-          {nombre} ------ <span>{valor}</span>
+          {nombre}&nbsp;&nbsp;&mdash;&mdash;&mdash;&nbsp;&nbsp;<span>{valor}</span>
         </p>
       </div>
     </>

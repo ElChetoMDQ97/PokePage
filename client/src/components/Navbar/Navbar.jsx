@@ -1,20 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SearchBar from "../../components/Search/Search.jsx";
 import style from './navbar.module.css';
 
-export const Navbar = () => {
+export const Navbar = ({currentPage}) => {
   return (
-    <div>
-      <header className={ style.header } >
+    <div className={ style.container }>
         <Link to="/" className={ style.logo }>
           <img src="img/logo.png" alt="" />
         </Link>
-        <ul>
-            <li><Link to="/home">Pokedex</Link></li>
-            <li><Link to="/create">Create</Link></li>
-            <li><Link to="/team">My team</Link></li>
+        <SearchBar  currentPage={() => currentPage(1)}/>
+        <ul className={style.ul}>
+            <li className={style.li}><Link to="/home" className={style.link}>Pokedex</Link></li>
+            &nbsp;
+            <li className={style.li}><Link to="/create" className={style.link}>Create</Link></li>
+            &nbsp;
+            <li className={style.li}><Link to="/team" className={style.link}>Team</Link></li>
         </ul>
-      </header>
     </div>
   );
 };

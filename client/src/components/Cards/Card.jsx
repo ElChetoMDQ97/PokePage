@@ -2,44 +2,36 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./card.css";
 
-export const Card = ({ array, img }) => {
+export const Card = ({ name, image, attack, weight, id, Types }) => {
+  
   return (
-    <>
-      <div className="container">
-        {array.length ? (
-          array.map((p) => (
-            <Link to={`/pokedex/${p.id}`} key={p.name}>
-              <figure className={p.type[0]}>
-                <div className="cardImageContainer">
-                  <img src={p.img} alt="" className="CardImage" />
-                </div>
-                <figcaption className="cardCaption">
-                  <h1 className="cardName">#{p.idPoke ? `${p.idPoke}H` : p.id}-{p.name}</h1>
-                  {p.type.length >= 2 ? (
-                    <div className="types">
-                      <h3 className="cardType">{p.type[0]}</h3>
-                      <h3 className="cardType">{p.type[1]}</h3>
-                    </div>
-                  ) : (
-                    <div className="types">
-                      <h3 className="cardType">{p.type[0]}</h3>
-                    </div>
-                  )}
-                </figcaption>
-              </figure>
-            </Link>
-          ))
-        ) : (
-          <img
-            src={
-              array.info
-                ? "https://media.giphy.com/media/UHAYP0FxJOmFBuOiC2/giphy.gif"
-                : img
-            }
-            alt="Not found"
-          />
-        )}
+    <div className="container" >
+      <Link to={`/pokedex/${id}`} key={name}>
+        <figure className={Types[1] ? Types[1] : Types[0]}>
+        <div className="cardImageContainer">
+          <img src={image} alt="" className="CardImage" />
+        </div>
+      <figcaption className="cardCaption">
+        <h1 className="cardName">#{id} - {name}</h1>
+        <br/><br/><br/><br/>
+          {Types.length >= 2 ? (
+              <div className="types">
+                <h3 className="cardType">{Types[0]}</h3>
+                <h3 className="cardType">{Types[1]}</h3>
+              </div>
+            ) : (
+                  <div className="types">
+                    <h3 className="cardType">{Types[0]}</h3>
+                  </div>
+                )
+          }
+      <div>
+        <h3 className="cardName">Attack: {attack}</h3> 
+        <h3 className="cardName">Weight: {weight}</h3>
       </div>
-    </>
+      </figcaption>
+      </figure>
+      </Link>
+    </div>
   );
 };

@@ -1,18 +1,13 @@
 const { Router } = require("express");
-const fetch = require("node-fetch");
-const { Tipo } = require("../db.js");
+const { Type } = require("../db.js");
+const { getTypes } = require('../middlewares/TypeMiddleware.js')
 
 const router = Router();
 
 router.get('/', async (req, res) => {
-    const api = await fetch('https://pokeapi.co/api/v2/type');
-    const types = await api.json();
-    for( t of types.results ) {
-        const existe = await Tipo.findOne({where: { name: t.name }})
-        if(existe) return res.json(await Tipo.findAll())
-        await Tipo.create({ name: t.name})
-    }
-    res.json(await Tipo.findAll());
+await  getTypes()
+   let types = await Type.findAll({order:['name']})
+    return res.status(200).send(types)
 })
 
 
